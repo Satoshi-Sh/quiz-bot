@@ -1,4 +1,4 @@
-name: run toot.py
+name: Run toot.py
 on:
   workflow_dispatch:
 jobs:
