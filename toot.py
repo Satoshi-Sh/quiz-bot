@@ -4,6 +4,7 @@ import os
 from mastodon import Mastodon
 from dotenv import load_dotenv
 import datetime
+import pytz
 load_dotenv()
 
 def main():
@@ -49,11 +50,13 @@ def make_toot(category,level,question,answers,tags,correct):
         poll= poll
     )
     current_time_utc = datetime.datetime.utcnow()
-    ten_minutes_later_utc = current_time_utc + datetime.timedelta(seconds=time)
+    cst = pytz.timezone('US/Central')
+    cst_now = current_time_utc.replace(tzinfo=pytz.utc).astimezone(cst)
+    ten_minutes_later_cst = cst_now + datetime.timedelta(seconds=time)
 
     mastodon.status_post(
         status=f"Answer: {correct}",
-        scheduled_at=ten_minutes_later_utc
+        scheduled_at=ten_minutes_later_cst
     )
 
 if __name__ == "__main__":
