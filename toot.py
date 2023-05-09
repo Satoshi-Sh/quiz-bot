@@ -46,7 +46,7 @@ def make_toot(category,level,question,answers,tags,correct):
         expires_in=time,
     )
     mastodon.status_post(
-        status=f"""Category:{category}\nLevel:{level}\nQuestion:{question}\n{tags}""",
+        status=f"""Category: {category}\nLevel: {level}\nQuestion: {question}\n{tags}""",
         poll= poll
     )
     current_time_utc = datetime.datetime.utcnow()
