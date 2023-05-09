@@ -37,8 +37,7 @@ def prepare_quiz():
 
 def make_toot(category,level,question,answers,tags,correct):
     time=600
-    print(os.environ.get('ACCESS_TOKEN'))
-    print(os.environ.get("URL"))
+    print(os.environ)
     mastodon = Mastodon(
         access_token=os.environ.get('ACCESS_TOKEN'),
         api_base_url = os.environ.get('URL'))
